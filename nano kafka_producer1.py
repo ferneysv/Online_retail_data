@@ -1,5 +1,5 @@
 # Este código se ejecuta después de la aplicación spark_streaming_consumer2.py
-Comando para ejecutar en Putty: python3 kafka_producer1.py
+# Comando para ejecutar en Putty: python3 kafka_producer1.py
 import json
 import time
 import random
