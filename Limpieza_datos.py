@@ -1,7 +1,4 @@
 # En este código se refleja el proceso de limpieza, análisis y transformación de datos
-# Comando para ejecutar en putty: /opt/spark/bin/spark-submit limpieza_datos.py
-# Comando para descargar los datos: wget https://archive.ics.uci.edu/dataset/352/online+retail
-# Comando para extracción de archivo: online+retail.zip
 # Comando para crear el topic (online_retail_data) 
 /opt/Kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic online_retail_data
 import os
