@@ -1,4 +1,4 @@
-# Este código se ejecuta como primera instancia.
+# Este código se ejecuta antes del nano kafka_producer1.py
 # comando para ejecutar en putty: spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.6 spark_streaming_consumer2.py
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col, count, avg
