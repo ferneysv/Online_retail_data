@@ -1,5 +1,5 @@
 # En este código se refleja el proceso de limpieza, análisis y transformación de datos
-# Comando para crear el topic (online_retail_data) 
+# Comando para crear el topic (online_retail_data) :
 /opt/Kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic online_retail_data
 import os
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-11-openjdk-amd64"
@@ -29,7 +29,7 @@ null_counts.show()
 # Eliminar valores duplicados
 df = df.dropna().dropDuplicates()
 
-# Filtro de los precios positivos y cantidades válidas
+# Filtrar los precios positivos y cantidades válidas
 df = df.filter((df["UnitPrice"] > 0) & (df["Quantity"] > 0))
 
 print(" Datos limpios: ")
@@ -38,7 +38,7 @@ df.show(5)
 # Transformacion de valor total
 df = df.withColumn("TotalValue", col("Quantity") * col("UnitPrice"))
 
-# (EDA)
+# (EDA) Registros de ventas por país
 
 print(" Ventas por país: ")
 ventas_pais = df.groupBy("Country").agg(
@@ -57,7 +57,7 @@ productos_top = df.groupBy("Description").agg(
 productos_top.show(10, truncate=False)
 
 
-#  RDD en operaciones bajas
+#  RDD en otras operaciones
 rdd = df.rdd
 
 #  cantidad total y promedio de precios con el comando RDD
@@ -68,10 +68,10 @@ print(f" RDD para Análisis exploratorio de datos")
 print(f"Total de registros: {total_registros}")
 print(f"Precio promedio: {precio_promedio_rdd:.2f}")
 
-#  Guardar desarrollo de datos limpios y transformados
+#  Guardar el desarrollo de datos limpios y transformados
 df.write.csv("onlineretail_clean_eda.csv", header=True, mode="overwrite")
 
-print(" Limpieza, y análisis exploratorio de datos")
+print(" Limpieza y análisis exploratorio de datos")
 
 spark.stop()
 
